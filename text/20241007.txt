@@ -1,11 +1,11 @@
-accessible 可到达的；可进入的
-along the way 沿途
-argued bitterly 激烈地争论
-biography 传记
-bury 埋
-character 人物；字符
-comedy 喜剧
-commitment 忠诚；承诺
+accessible|可到达的；可进入的
+along the way|沿途
+argued bitterly|激烈地争论
+biography|传记
+bury|埋
+character|人物；字符
+comedy|喜剧
+commitment|忠诚；承诺
 complicated|复杂的
 compromise|妥协；损害
 confine|限制
