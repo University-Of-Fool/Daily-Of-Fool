@@ -11,20 +11,22 @@ for FILE in $FILE_LIST;
     echo "## $FILE" > $DESTINATION/$FILE.md
     echo "|EN_US|ZH_CN|  " >> $DESTINATION/$FILE.md
     echo "|:----|:----|  " >> $DESTINATION/$FILE.md
-    for LINE in $(cat $SOURCE/$FILE);
+    while IFS= read -r LINE;
         do
             echo "|$LINE|  " >> $DESTINATION/$FILE.md
         done
-    done
+    done < $SOURCE/$FILE
 
 ## Generate index page.
 cat README.md > $DESTINATION/index.md
 echo "## 期刊列表" >> $DESTINATION/index.md
-echo "|期数|日期|  " >> $DESTINATION/index.md
+echo "|期数|日期(YYYYMMDD)|  " >> $DESTINATION/index.md
 echo "|:--|:--|  " >> $DESTINATION/index.md
+let NUM=0
 for FILE in $FILE_LIST;
     do
-        echo "|[${FILE%.*}](./$FILE)|  " >> $DESTINATION/index.md
+        let NUM=$NUM+1
+        echo "|$NUM|[${FILE%.*}](./$FILE)|  " >> $DESTINATION/index.md
     done
 echo "## 使用协议" >> $DESTINATION/index.md
 echo '```' >> $DESTINATION/index.md
