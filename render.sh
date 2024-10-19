@@ -1,16 +1,17 @@
 #!/bin/env bash
 
+SOURCE=text
 DESTINATION=site
 mkdir -p $DESTINATION
 
 ## Generate daily pages.
-FILE_LIST=$(ls -1 text)
+FILE_LIST=$(ls -1 $SOURCE)
 for FILE in $FILE_LIST;
     do
     echo "## $FILE" > $DESTINATION/$FILE'.md'
     echo "|EN_US|ZH_CN|" >> $DESTINATION/$FILE'.md'
     echo "|:----|:----|" >> $DESTINATION/$FILE'.md'
-    for LINE in $(cat $FILE);
+    for LINE in $(cat $SOURCE/$FILE);
         do
             echo "'|'$LINE'|'" >> $DESTINATION/$FILE'.md'
         done
