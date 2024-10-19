@@ -8,14 +8,14 @@ mkdir -p $DESTINATION
 FILE_LIST=$(ls -1 $SOURCE)
 for FILE in $FILE_LIST;
     do
-    echo "## $FILE" > $DESTINATION/$FILE'.md'
-    echo "|EN_US|ZH_CN|" >> $DESTINATION/$FILE'.md'
-    echo "|:----|:----|" >> $DESTINATION/$FILE'.md'
+    echo "## $FILE" > $DESTINATION/$FILE.md
+    echo "|EN_US|ZH_CN|" >> $DESTINATION/$FILE.md
+    echo "|:----|:----|" >> $DESTINATION/$FILE.md
     for LINE in $(cat $SOURCE/$FILE);
         do
-            echo "|$LINE|" >> $DESTINATION/$FILE'.md'
+            echo "|$LINE|" >> $DESTINATION/$FILE.md
         done
-    unix2dos $DESTINATION/$FILE'.md'
+    sed 's/$/\r/' $DESTINATION/$FILE.md > $DESTINATION/$FILE.md
     done
 
 ## Generate index page.
@@ -31,4 +31,4 @@ echo "## 使用协议" >> $DESTINATION/index.md
 echo '```' >> $DESTINATION/index.md
 cat LICENSE >> $DESTINATION/index.md
 echo '```' >> $DESTINATION/index.md
-unix2dos $DESTINATION/index.md
+sed 's/$/\r/' $DESTINATION/index.md > $DESTINATION/index.md
