@@ -15,7 +15,7 @@ for FILE in $FILE_LIST;
         do
             echo "|$LINE|" >> $DESTINATION/$FILE.md
         done
-    sed 's/$/\r/' $DESTINATION/$FILE.md > $DESTINATION/$FILE.md
+    cat $DESTINATION/$FILE.md | sed 's/$/\r/' > $DESTINATION/$FILE.md
     done
 
 ## Generate index page.
@@ -31,4 +31,4 @@ echo "## 使用协议" >> $DESTINATION/index.md
 echo '```' >> $DESTINATION/index.md
 cat LICENSE >> $DESTINATION/index.md
 echo '```' >> $DESTINATION/index.md
-sed 's/$/\r/' $DESTINATION/index.md > $DESTINATION/index.md
+cat $DESTINATION/index.md | sed 's/$/\r/' > $DESTINATION/index.md
