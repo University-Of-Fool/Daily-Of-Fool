@@ -11,11 +11,11 @@ for FILE in $FILE_LIST;
     echo "## $FILE" > $DESTINATION/$FILE.md
     echo "|EN_US|ZH_CN|  " >> $DESTINATION/$FILE.md
     echo "|:----|:----|  " >> $DESTINATION/$FILE.md
-    while IFS= read -r LINE;
+    sed -n '1,$p' $SOURCE/$FILE | while read -r LINE;
         do
             echo "|$LINE|  " >> $DESTINATION/$FILE.md
         done
-    done < $SOURCE/$FILE
+    done
 
 ## Generate index page.
 cat README.md > $DESTINATION/index.md
