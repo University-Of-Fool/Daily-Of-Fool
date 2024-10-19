@@ -1,6 +1,7 @@
 #!/bin/env bash
 
-TARGET_DIR=docs
+TARGET_DIR=_site
+mkdir -p $TARGET_DIR
 
 ## Generate daily pages.
 FILE_LIST=$(ls -1 text)
