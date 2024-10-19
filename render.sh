@@ -1,29 +1,29 @@
 #!/bin/env bash
 
-TARGET_DIR=_site
-mkdir -p $TARGET_DIR
+DESTINATION=site
+mkdir -p $DESTINATION
 
 ## Generate daily pages.
 FILE_LIST=$(ls -1 text)
 for FILE in $FILE_LIST;
     do
-    echo "## $FILE" > $TARGET_DIR/$FILE'.md'
-    echo "|EN_US|ZH_CN|" >> $TARGET_DIR/$FILE'.md'
-    echo "|:----|:----|" >> $TARGET_DIR/$FILE'.md'
+    echo "## $FILE" > $DESTINATION/$FILE'.md'
+    echo "|EN_US|ZH_CN|" >> $DESTINATION/$FILE'.md'
+    echo "|:----|:----|" >> $DESTINATION/$FILE'.md'
     for LINE in $(cat $FILE);
         do
-            echo "'|'$LINE'|'" >> $TARGET_DIR/$FILE'.md'
+            echo "'|'$LINE'|'" >> $DESTINATION/$FILE'.md'
         done
     done
 
 ## Generate index page.
-cat README.md > $TARGET_DIR/index.md
-echo "## 期刊列表" >> $TARGET_DIR/index.md
+cat README.md > $DESTINATION/index.md
+echo "## 期刊列表" >> $DESTINATION/index.md
 for FILE in $FILE_LIST;
     do
-        echo "|[${FILE%.*}](./$FILE)|" >> $TARGET_DIR/index.md
+        echo "|[${FILE%.*}](./$FILE)|" >> $DESTINATION/index.md
     done
-echo "## 使用协议" >> $TARGET_DIR/index.md
-echo '```' >> $TARGET_DIR/index.md
-cat LICENSE >> $TARGET_DIR/index.md
-echo '```' >> $TARGET_DIR/index.md
+echo "## 使用协议" >> $DESTINATION/index.md
+echo '```' >> $DESTINATION/index.md
+cat LICENSE >> $DESTINATION/index.md
+echo '```' >> $DESTINATION/index.md
